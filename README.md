@@ -1,2 +1,2 @@
-# apartments
+# rental_apartments
 Rental apartments
