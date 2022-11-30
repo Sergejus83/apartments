@@ -2,7 +2,6 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-# kuriam Modelius
 
 User = get_user_model()
 
@@ -17,14 +16,14 @@ class Apartment(models.Model):
     room = models.IntegerField(_("room(s)"))
     bed = models.IntegerField(_("bed(s)"))
     sofa = models.IntegerField(_("sofa"), null=True)
-    price = models.DecimalField(_(""), max_digits=10, decimal_places=2)
+    price = models.DecimalField(_("price"), max_digits=10, decimal_places=2)
 
     def __str__(self) -> str:
         return f'Apartment: {self.name}, type: {self.apart_type}, {self.city}. Size {self.size}m2, price: {self.price} Eur'
-    
+
 
 class Guest(models.Model):
-    user = models.ForeignKey(
+    user = models.OneToOneField(
         User, 
         verbose_name=_("user"), 
         on_delete=models.CASCADE,
@@ -37,7 +36,7 @@ class Guest(models.Model):
     
 
 class Reservation(models.Model):
-    guest = models.OneToOneField(
+    guest = models.ForeignKey(
         Guest, 
         verbose_name=_("guest"), 
         on_delete=models.CASCADE,
@@ -52,8 +51,8 @@ class Reservation(models.Model):
     date_reserved = models.DateField(_("date of reservation"), auto_now_add=True)
     date_in = models.DateField(_("date in"), null=True, blank=True)
     date_out = models.DateField(_("date out"), null=True, blank=True)
-    # total_nights = models.IntegerField(_("total nights"))
-    # price = models.DecimalField(_("price"), max_digits=10, decimal_places=2)
+    total_nights = models.IntegerField(_("total nights"), default=0)
+    price = models.DecimalField(_("price"), max_digits=10, decimal_places=2, default=0)
     RESERVATION_STATUS = (
         ('r', _('reserved')),
         ('c', _('canceled')),
@@ -63,18 +62,17 @@ class Reservation(models.Model):
     )
     status = models.CharField(_("status"), max_length=1, choices=RESERVATION_STATUS, default='n')
 
-    # @property
-    # def total_nights(self):
-    #     return self.date_out - self.date_in
+    def get_total_nights(self):
+        return self.date_out - self.date_in
 
-    # @property
-    # def total_price(self):
-    #     return self.total_nights * self.price
+    @property
+    def total_price(self):
+        return self.total_nights * self.price
+
+    def save(self, *args, **kwargs):
+        self.total_nights = self.get_total_nights().days
+        super().save(*args, **kwargs)
 
     def __str__(self) -> str:
-        return f'ID: {self.id}chek-in: {self.date_in}, check-out: {self.date_out}'
-    
-
-
-
+        return f'ID: {self.id}  ||  from {self.date_in} to {self.date_out}  ||  total: {self.total_nights}d./ {self.total_price} Eur'
     
