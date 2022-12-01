@@ -19,8 +19,8 @@ class Apartment(models.Model):
     price = models.DecimalField(_("price"), max_digits=10, decimal_places=2)
 
     def __str__(self) -> str:
-        return f'Apartment: {self.name}, type: {self.apart_type}, {self.city}. Size {self.size}m2, price: {self.price} Eur'
-
+        # return f'Apartment: {self.name}, type: {self.apart_type}, {self.city}. Size {self.size}m2, price: {self.price} Eur'
+        return self.name
 
 class Guest(models.Model):
     user = models.OneToOneField(
@@ -53,6 +53,7 @@ class Reservation(models.Model):
     date_out = models.DateField(_("date out"), null=True, blank=True)
     total_nights = models.IntegerField(_("total nights"), default=0)
     price = models.DecimalField(_("price"), max_digits=10, decimal_places=2, default=0)
+    total_price = models.DecimalField(_("total price"), max_digits=10, decimal_places=2, default=0)
     RESERVATION_STATUS = (
         ('r', _('reserved')),
         ('c', _('canceled')),
