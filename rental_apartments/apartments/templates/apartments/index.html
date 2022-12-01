@@ -1,0 +1,14 @@
+{% extends 'apartments/base.html' %}
+{% load i18n %}
+{% block title %} {% trans "Welocome to" %} {{block.super}}{% endblock title %}
+{% block content %}
+<h1>{% trans "The best Apartments" %}</h1>
+    <ul>
+        <p>{% trans "Welcome to the best apartments" %}</p>
+        <li>{% trans "Total apartments we have" %}: {{ apartment_count }}</li>
+        <li>{% trans "Total reservations made" %}: {{ reservation_count }}</li>
+        <li>{% trans "Total unique guets registered" %}: {{ user_count }}</li>
+        <li>{% trans "Total visitors seen our website" %}: {{ visit_count }}</li>
+
+    </ul>
+{% endblock content %}

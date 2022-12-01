@@ -1,0 +1,21 @@
+body {
+    background-color: rgb(168, 205, 232);
+    margin: 0;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: rgba(239, 239, 224, 0.2);
+    /* max-width: 1200px;
+    min-width: 480px; */
+    margin: 5rem, auto;
+}
+
+footer {
+    display: flex;
+    align-content: stretch;
+}
