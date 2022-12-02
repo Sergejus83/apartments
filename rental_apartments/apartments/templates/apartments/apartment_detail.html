@@ -1,0 +1,21 @@
+{% extends 'apartments/base.html' %}
+{% load static i18n  %}
+{% block title %}{% trans "Apartment" %}{% endblock title %}
+{% block content %}
+    <h1>{{ object.name }}</h1>
+    <h3>{% trans "Adsress" %}: {{ object.address }}, {{ object.city }}</h3>
+    <li class='container'>
+        <h3>{% trans "Room type" %}: {{ object.apart_type }} / {% trans "Size" %}: {{ object.size }} </h3>
+        <p>{% trans "Size" %}: {{ object.size }}</p>
+    </li>
+
+
+
+
+        <div class="description">
+            {{ object.description }}
+        </div>
+        
+
+
+{% endblock content %}

@@ -16,8 +16,11 @@
         <div class = "container">
             {% block nav %}
                 <a href="{% url 'index' %}">{% trans "Home" %}</a>
-                <a href="{% url 'admin:index' %}">{% trans "Admin" %}</a>
-            {% endblock nav %}
+                <a href="{% url 'apartments' %}">{% trans "Apartments" %}</a>
+                <span class="spacer"></span>
+                    <a href="{% url 'admin:index' %}">{% trans "Admin" %}</a>
+
+                {% endblock nav %}
         </div>
     </header>
     <main>

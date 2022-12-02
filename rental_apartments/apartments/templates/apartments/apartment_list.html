@@ -1,0 +1,25 @@
+{% extends 'apartments/base.html' %}
+{% load static i18n  %}
+{% block title %}{% trans "Apartments" %}{% endblock title %}
+{% block content %}
+    <h1>{% trans "Apartments available" %} : {{ apartment_count }}</h1>
+    {% comment %} <ul>
+        <form action="{% url 'apartments' %}" method="get">
+            <input type="text" name="search" value="{{ request.GET.search }}">
+            <button type="submit">{% trans "search" %}</button>
+        </form>
+    </ul> {% endcomment %}
+    <ul class='apartment_list'>
+        {% for apartment in apartment_list %}
+            <li class='apartment'>
+                <a href="{% url 'apartment' apartment.pk %}">
+                    {% if apartment.photo %}
+                        <img src="{{apartment.photo.url}}">
+                    {% endif %}
+                    <h3>{{ apartment.name }}</h3>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+{% endblock content %}
+`   `

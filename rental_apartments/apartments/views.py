@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
 from . models import Apartment, Guest, Reservation, User
+from django.views.generic import ListView, DetailView
 
 
 def index(request):
@@ -21,3 +22,18 @@ def index(request):
     
     return render (request, 'apartments/index.html', context=context)
 
+
+class ApartmentListView(ListView):
+    model = Apartment
+    template_name = 'apartments/apartment_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['apartment_count'] = self.get_queryset().count()
+        return context
+
+
+
+class ApartmentDetailView(DetailView):
+    model = Apartment
+    template_name = 'apartments/apartment_detail.html'
