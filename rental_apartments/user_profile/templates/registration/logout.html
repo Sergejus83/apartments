@@ -1,0 +1,8 @@
+{% extends 'apartments/base.html' %}
+{% load static i18n  %}
+{% block title %}{% trans "Logout from " %}{{ block.super }}{% endblock title %}
+{% block content %}
+<h1>{% trans "Loged out from 'Apartments'" %}</h1>
+
+<p>{% trans "To login again press the putton " %}<a href="{% url 'login' %}">{% trans "Login" %}</a>.</p>
+{% endblock content %}
