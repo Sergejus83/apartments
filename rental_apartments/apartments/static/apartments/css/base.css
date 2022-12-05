@@ -99,3 +99,25 @@ ul.apartment_list li.apartment {
     max-width: 400px;
     min-width: 400px;
 }
+
+table {
+    margin: 0.5rem 1rem;
+}
+
+.form-error {
+    border: 0.5pt solid rgb(255, 0, 0);
+    background-color: rgba(240, 143, 143, 0.5);
+    color: rgb(180, 0, 0);
+}
+
+.table-grid {
+    display: grid;
+    padding: 0.5rem;
+}
+
+.form-grid div {
+    display: inline-block;
+    padding: 0.5rem;
+    align-self: center;
+    justify-self: stretch;
+}
