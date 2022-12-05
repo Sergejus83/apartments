@@ -94,3 +94,8 @@ ul.apartment_list li.apartment {
     padding: 0.5rem 1rem;
     margin: 0;
 }
+
+.img-detail{
+    max-width: 400px;
+    min-width: 400px;
+}

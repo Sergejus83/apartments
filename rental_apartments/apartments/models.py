@@ -18,6 +18,11 @@ class Apartment(models.Model):
     sofa = models.IntegerField(_("sofa"), null=True)
     price = models.DecimalField(_("price"), max_digits=10, decimal_places=2)
     photo = models.ImageField(_("photo"), upload_to='photo', blank=True, null=True)
+    photo_2 = models.ImageField(_("photo"), upload_to='photo', blank=True, null=True)
+    photo_3 = models.ImageField(_("photo"), upload_to='photo', blank=True, null=True)
+    photo_4 = models.ImageField(_("photo"), upload_to='photo', blank=True, null=True)
+    photo_5 = models.ImageField(_("photo"), upload_to='photo', blank=True, null=True)
+    photo_6 = models.ImageField(_("photo"), upload_to='photo', blank=True, null=True)
 
     def __str__(self) -> str:
         # return f'Apartment: {self.name}, type: {self.apart_type}, {self.city}. Size {self.size}m2, price: {self.price} Eur'
