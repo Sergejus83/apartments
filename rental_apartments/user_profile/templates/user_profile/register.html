@@ -3,7 +3,7 @@
 {% block title %}{% trans "Registration to" %} {{ block.super }}{% endblock title %}
 {% block content %}
 <h1>{% trans "Registration new 'Apartments' account" %}</h1>
-<form action="" mothod="post">
+<form action="" method="post">
     {% csrf_token %}
     <div class = "table-grid form-grid">
         <div><label for="username">{% trans "Username" %}</label></div>
@@ -11,10 +11,10 @@
         <div><label for="email">{% trans "Email" %}</label></div>
         <div><input type="text" name="email" value="{{ request.POST.email }}"></div>
         <div><label for="password">{% trans "Create password" %}</label></div>
-        <div><input type="password" name="username"></div>
+        <div><input type="password" name="password"></div>
         <div><label for="password_2">{% trans "Repeat password" %}</label></div>
         <div><input type="password" name="password_2"></div>
-        <div><label>{% trans "To register new account press button 'Register'" %}</label></div>
+        <div><label>{% trans "To confirm press button 'Register'" %}</label></div>
         <div><button type="submit">{% trans "REGISTER" %}</button></div>
     </div>
 </form>

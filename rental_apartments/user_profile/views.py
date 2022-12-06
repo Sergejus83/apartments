@@ -11,17 +11,17 @@ User = get_user_model()
 
 @csrf_protect
 def register(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
         password_2 = request.POST.get('password_2')
         error = False
 
-        if not User.objects.filter(username=username).first or username:
+        if User.objects.filter(username=username).first() or not username:
             messages.error(request, _("Warning! Username not entered or already exists!"))
             error = True
-        if not User.objects.filter(email=email).first() or email:
+        if User.objects.filter(email=email).first() or not email:
             messages.error(request, _("Warning! Email not entered or already exists!"))
             error = True
         else: 
@@ -29,15 +29,16 @@ def register(request):
                 validate_email(email)
             except:
                 messages.error(request, _("Warning! Invalid email!"))
+                error = True
         if password != password_2 or not password or not password_2:
             messages.error(request, _("Warninig! Password not entered or not the same!"))
             error = True
 
         if not error:
             User.objects.create_user(username=username, email=email, password=password)
-            messages.success(request, "OK")
+            messages.success(request, _('Successful! New user "') + f"{ username }" + _( '" created!'))
             return redirect('login')
-            # _('Successful! New user ') + f"{ username }" + _( 'created!')
+            
         
     return render(request, 'user_profile/register.html')
 
