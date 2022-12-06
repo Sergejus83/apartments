@@ -3,6 +3,19 @@
 {% block title %}{{ user }} {% trans "profille" %}{% endblock title %}
 {% block content %}
 <h1>{{ user }} {% trans "profile" %}</h1>
-
+<div class="flex-profile">
+    {% if user.profile and user.profile.photo %}
+        <div>
+            <img class="user-profile-photo" src="{{ user.profile.photo.url }}" >
+        </div>
+    {% endif %}
+    <div class="spacer">
+        {% if user.first_name or user.last_name %}
+            <p>{% trans "Name" %}: {{ user.first_name}} {{ user.last_name }}</p>
+        {% endif %}
+        <p>{% trans "Email" %}: {{ user.email }}</p>
+        <p><a class="button" href="{% url 'update_profile' %}">{% trans "Update" %}</a></p>
+    </div>
+</div>
 {% endblock content %}
 

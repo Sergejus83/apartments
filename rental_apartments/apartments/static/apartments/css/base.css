@@ -17,6 +17,21 @@
     border-color: rgb(1, 66, 1);
 }
 
+.button {
+    background-color: rgb(104, 150, 219);
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border: 0.5px solid rgb(0, 21, 179);
+    border-radius: 0.5rem;
+    padding: 0.1rem 0.5rem;
+}
+
+.button:hover {
+    background-color: rgb(174, 221, 162);
+    text-decoration: solid;
+    color: rgb(5, 75, 7);
+}
+
 header {
     background-color: rgb(5, 31, 47);
 }
@@ -153,3 +168,7 @@ footer {
     border-radius: 1rem;
 }
 
+.user-profile-photo {
+    max-width: 20rem;
+    border-radius: 5rem;
+}
