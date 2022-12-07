@@ -101,6 +101,11 @@ ul li.apartment img {
     max-width: 100%;
 }
 
+::marker {
+    color: rgb(140, 185, 230);
+
+}
+
 ul.apartment_list {
     display: flex;
     flex-direction: row;
@@ -141,6 +146,17 @@ table {
     padding: 0.5rem;
 }
 
+.my-reservation-table {
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+}
+
+.table-grid-cell {
+    display: inline-block;
+    align-self: stretch;
+    justify-self: stretch;
+    background-color: #ccc;
+    padding: 0.5rem;
+}
 .form-grid {
     grid-template-columns: 10rem auto;
 }

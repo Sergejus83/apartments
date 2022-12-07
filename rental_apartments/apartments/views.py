@@ -4,10 +4,12 @@ from django.utils.translation import gettext_lazy as _
 from . models import Apartment, Guest, Reservation, User
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from . forms import ReservationForm #, ReservationUpdateForm
+from . forms import ReservationForm, ReservationUpdateForm
 from django.urls import reverse, reverse_lazy
 from django.contrib import messages
+# from django.contrib.auth import get_user_model
 
+# User = get_user_model()
 
 
 def index(request):
@@ -50,7 +52,7 @@ class UserReservationListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter().order_by('-date_in')
+        queryset = queryset.filter(guest=self.request.user.guest) # .order_by('-date_in')
         return queryset
 
 
@@ -61,11 +63,44 @@ class UserReservationCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('user_reservations')
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.guest = self.request.user.guest
         form.instance.status = 'r'
         messages.success(self.request, _('The apartment has been reserved!'))
         return super().form_valid(form)
 
+
+class UserReservationUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Reservation
+    form_class = ReservationUpdateForm
+    template_name = 'apartments/user_reservation_update.html'
+    success_url = reverse_lazy('user_reservations')
+
+    def form_valid(self, form):
+        form.instance.guest = self.request.user.guest
+        form.instance.status = 'r'
+        messages.success(self.request, _('Reservation was changed!'))
+        return super().form_valid(form)
+
+    def test_func(self):
+        reservation = self.get_object()
+        return self.request.user.guest == reservation.guest
+
+
+
+class UserReservationDeleteView(LoginRequiredMixin,UserPassesTestMixin, DeleteView):
+    model = Reservation
+    template_name = 'apartments/user_reservation_delete.html'
+    success_url = reverse_lazy('user_reservations')
+
+    def test_func(self):
+        reservation = self.get_object()
+        return self.request.user.guest == reservation.guest
+
+    def form_valid(self, form):
+        reservation = self.get_object()
+        if reservation.status == 'r':
+            messages.success(self.request, _('Reservation CANCELLED!'))
+        return super().form_valid(form)
 
 
 

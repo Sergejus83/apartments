@@ -2,7 +2,7 @@
 {% load static i18n  %}
 {% block title %}{{ user }} {% trans "profille" %}{% endblock title %}
 {% block content %}
-<h1>{{ user }} {% trans "profile" %}</h1>
+<h1>"{{ user }}" {% trans "profile" %}</h1>
 <div class="flex-profile">
     {% if user.profile and user.profile.photo %}
         <div>

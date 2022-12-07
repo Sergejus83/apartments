@@ -3,16 +3,32 @@
 {% block title %} {% trans "Reservation history of " %} {{block.super}}{% endblock title %}
 {% block content %}
 <h1>{% trans "Reservation History" %}</h1>
-<form action="" method="post">
-    {% if reservation_instance %}
-        <p>{{ reservation_instance.reservation }}</p>
-    {% endif %}
-    <a href="{% url 'user_reservation_create' %}">{% trans "Make reservation" %}</a>
-
-    {% csrf_token %}
-    {{ form.as_p }}
-    <p>
-        <button class="button" type="submit">{% trans "Reservation" %}</button>
-    </p>
-</form>
+<p><a class="button" href="{% url 'user_reservation_create' %}">{% trans "Make reservation" %}</a></p>
+<div class="table-grid my-reservation-table">
+    <div class="table-grid-cell center dark">{% trans "Apartment name" %}</div>
+    <div class="table-grid-cell center dark">{% trans "Reserved date" %}</div>
+    <div class="table-grid-cell center dark">{% trans "Check-in" %}</div>
+    <div class="table-grid-cell center dark">{% trans "Check-out" %}</div>
+    <div class="table-grid-cell center dark">{% trans "Total nights" %}</div>
+    <div class="table-grid-cell center dark">{% trans "Total price" %}</div>
+    <div class="table-grid-cell center dark">{% trans "Status" %}</div>
+    <div class="table-grid-cell center dark">{% trans "Action" %}</div>
+    {% for reservation in reservation_list %}
+        <div class="table-grid-cell">{{ reservation.apartment }}</div>
+        <div class="table-grid-cell">{{ reservation.date_reserved }}</div>
+        <div class="table-grid-cell">{{ reservation.date_in }}</div>
+        <div class="table-grid-cell">{{ reservation.date_out }}</div>
+        <div class="table-grid-cell">{{ reservation.total_nights }}</div>
+        <div class="table-grid-cell">{{ reservation.total_price }}</div>
+        <div class="table-grid-cell">{{ reservation.get_status_display }}</div>
+        <div class="table-grid-cell center">
+            {% if reservation.status == 'r' %}
+                {% comment %} <a class="button-change" href="{% url 'user_reservation_delete' reservation.pk %}">{% trans "Cancel" %}</a> {% endcomment %}
+                {% comment %} <a class="button-change" href="{% url 'user_reservation_update' reservation.pk  %}">{% trans "Update" %}</a> {% endcomment %}
+            {% elif reservation.status == 'p' %} 
+            <a>{% trans "Done" %}</a>
+            {% endif %}
+        </div>      
+    {% endfor %}
+</div>
 {% endblock content %}

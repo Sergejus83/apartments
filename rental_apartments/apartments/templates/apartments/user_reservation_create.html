@@ -3,6 +3,9 @@
 {% block title %} {% trans "Welocome to" %} {{block.super}}{% endblock title %}
 {% block content %}
 <h1>{% trans '"The best Apartments" - Reservation page' %}</h1>
+{% if form.errors %}
+    <p class="form-error">{{ ValidationError }}</p>
+{% endif %}
 <form action="" method="post">
     {% if reservation_instance %}
         <p>{{ reservation_instance.reservation }}</p>
