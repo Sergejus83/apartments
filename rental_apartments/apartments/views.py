@@ -2,7 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
 from . models import Apartment, Guest, Reservation, User
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from . forms import ReservationForm #, ReservationUpdateForm
+from django.urls import reverse, reverse_lazy
+from django.contrib import messages
+
 
 
 def index(request):
@@ -37,3 +42,31 @@ class ApartmentListView(ListView):
 class ApartmentDetailView(DetailView):
     model = Apartment
     template_name = 'apartments/apartment_detail.html'
+
+
+class UserReservationListView(LoginRequiredMixin, ListView):
+    model = Reservation
+    template_name = 'apartments/user_reservation_list.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter().order_by('-date_in')
+        return queryset
+
+
+class UserReservationCreateView(LoginRequiredMixin, CreateView):
+    model = Reservation
+    form_class = ReservationForm
+    template_name = 'apartments/user_reservation_create.html'
+    success_url = reverse_lazy('user_reservations')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.status = 'r'
+        messages.success(self.request, _('The apartment has been reserved!'))
+        return super().form_valid(form)
+
+
+
+
+

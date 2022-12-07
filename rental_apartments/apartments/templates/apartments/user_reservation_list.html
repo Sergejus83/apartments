@@ -1,0 +1,18 @@
+{% extends 'apartments/base.html' %}
+{% load i18n %}
+{% block title %} {% trans "Reservation history of " %} {{block.super}}{% endblock title %}
+{% block content %}
+<h1>{% trans "Reservation History" %}</h1>
+<form action="" method="post">
+    {% if reservation_instance %}
+        <p>{{ reservation_instance.reservation }}</p>
+    {% endif %}
+    <a href="{% url 'user_reservation_create' %}">{% trans "Make reservation" %}</a>
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <p>
+        <button class="button" type="submit">{% trans "Reservation" %}</button>
+    </p>
+</form>
+{% endblock content %}

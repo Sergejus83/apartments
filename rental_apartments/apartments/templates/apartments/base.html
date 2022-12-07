@@ -20,8 +20,10 @@
                 <span class="spacer"></span>
                 {% if user.is_authenticated %}
                     <a href="{% url 'profile' %}">{{ user }}</a>
+                    <a href="{% url 'user_reservations' %}">{% trans "My reservations" %}</a>
                     <span></span>
                     {% if user.is_superuser or user.is_staff %}
+                        {% comment %} <a href="{% url 'reservations' %}">{% trans "Reservations" %}</a> {% endcomment %}
                         <a href="{% url 'admin:index' %}">{% trans "Admin" %}</a>
                     {% endif %}
                     <a href="{% url 'logout' %}">{% trans "Logout" %}</a>
