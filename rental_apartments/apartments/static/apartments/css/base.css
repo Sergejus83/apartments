@@ -28,8 +28,21 @@
 
 .button:hover {
     background-color: rgb(174, 221, 162);
-    text-decoration: solid;
     color: rgb(5, 75, 7);
+}
+
+.button-change {
+    background-color: rgb(104, 150, 219);
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border: 0.5px solid rgb(0, 21, 179);
+    border-radius: 0.5rem;
+    padding: 0.1rem 0.5rem;
+}
+.button-change:hover {
+    background-color: rgb(244, 150, 139);
+    text-decoration: solid;
+    color: rgb(145, 3, 3);
 }
 
 header {
@@ -89,6 +102,10 @@ h3 {
     /* max-width: 1200px;
     min-width: 480px; */
     /* margin: 5rem, auto; */
+}
+
+.red {
+    color: rgb(207, 2, 33);
 }
 
 .spacer {
@@ -187,4 +204,21 @@ footer {
 .user-profile-photo {
     max-width: 20rem;
     border-radius: 5rem;
+}
+
+
+.apartment-review h4 img {
+    max-height: 1.5rem;
+    float: left;
+    margin-right: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.apartment-review-form label {
+    display: none;
+}
+
+.review-form {
+    background-color: rgba(235, 221, 214, 0.3);
+    border-bottom: 3px solid rgb(17, 0, 255);
 }

@@ -1,7 +1,15 @@
 {% extends 'apartments/base.html' %}
 {% load i18n %}
-{% block title %} {% trans "Update reservation in " %} {{block.super}}{% endblock title %}
+{% block title %} {% trans "Cancel reservation from " %} {{block.super}}{% endblock title %}
 {% block content %}
-<h1>{% trans "Updating reservation info" %}</h1>
-
+<h1>{% trans "Reservation cancellation" %}</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <p class="red">{% trans "Do you sure you want to cancel your reservation now?" %}</p>
+    <p class="red">{% trans "Apartment" %}: {{ reservation.apartment }}</p>
+    <p>
+        <button type="submit" class="button-change">{% trans "YES" %}</button>
+        <a href="{% url 'user_reservations' %}" class="button">{% trans "NO" %}</a>
+    </p>
+</form>
 {% endblock content %}

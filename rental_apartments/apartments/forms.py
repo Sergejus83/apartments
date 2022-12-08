@@ -1,7 +1,11 @@
 from django import forms
-from . models import Reservation
+from . models import Reservation, ApartmentReview
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
+# from datetime import date
+from django.utils.timezone import datetime, timedelta
+
+
 
 
 class DateInput(forms.DateInput):
@@ -20,15 +24,26 @@ class ReservationForm(forms.ModelForm):
             date_in__gte=date_in,
             date_in__lt=date_out,
             date_out__gt=date_in,
-            date_out__lte=date_out
+            date_out__lte=date_out,
         )
+
         if reservations.count() > 0:
             raise ValidationError(_("Sorry! This apartment already booked on these dates!"))
+        # elif reservation_date.count() < 0:
+        #     raise ValidationError(_("Sorry! the date is not correct!"))
+
+        
+    # def invalid_date(self):
+    #     cleaned_data = super().clean()
+    #     date_in = date(cleaned_data.get("date_in"))
+    #     today = date.today()
+    #     if date_in < today:
+    #         raise ValidationError(_("Sorry! the date is not correct!"))
 
 
     class Meta:
         model = Reservation
-        fields = ('apartment', 'date_in', 'date_out')
+        fields = ('apartment', 'date_in', 'date_out', 'price')
         widgets = {'date_in': DateInput(), 'date_out': DateInput()}
 
 
@@ -37,3 +52,27 @@ class ReservationUpdateForm(forms.ModelForm):
         model = Reservation
         fields = ('apartment', 'date_in', 'date_out')
         widgets = {'apartment': forms.HiddenInput(), 'date_in': DateInput(), 'date_out': DateInput()}
+
+
+class AparmentReviewForm(forms.ModelForm):
+    def is_valid(self) -> bool:
+        valid = super().is_valid()
+        if valid:
+            guest = self.cleaned_data.get("guest")
+            recent_posts = ApartmentReview.objects.filter(
+                guest=guest,
+                created_at_gte=(datetime.utcnow()-timedelta(hours=1))
+            )
+            if recent_posts:
+                return False
+        return valid
+            
+    class Meta:
+        model = ApartmentReview
+        fields = ('apartment', 'guest', 'comment')
+        widgets = {
+            'apartment': forms.HiddenInput(),
+            'guest': forms.HiddenInput(),
+        }
+
+

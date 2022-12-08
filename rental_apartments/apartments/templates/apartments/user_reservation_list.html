@@ -3,7 +3,7 @@
 {% block title %} {% trans "Reservation history of " %} {{block.super}}{% endblock title %}
 {% block content %}
 <h1>{% trans "Reservation History" %}</h1>
-<p><a class="button" href="{% url 'user_reservation_create' %}">{% trans "Make reservation" %}</a></p>
+<p><a class="button" href="{% url 'user_reservation_create' %}">{% trans "Make new reservation" %}</a></p>
 <div class="table-grid my-reservation-table">
     <div class="table-grid-cell center dark">{% trans "Apartment name" %}</div>
     <div class="table-grid-cell center dark">{% trans "Reserved date" %}</div>
@@ -23,8 +23,8 @@
         <div class="table-grid-cell">{{ reservation.get_status_display }}</div>
         <div class="table-grid-cell center">
             {% if reservation.status == 'r' %}
-                {% comment %} <a class="button-change" href="{% url 'user_reservation_delete' reservation.pk %}">{% trans "Cancel" %}</a> {% endcomment %}
-                {% comment %} <a class="button-change" href="{% url 'user_reservation_update' reservation.pk  %}">{% trans "Update" %}</a> {% endcomment %}
+                <a class="button-change" href="{% url 'user_reservation_delete' reservation.pk %}">{% trans "Cancel" %}</a>
+                <a class="button-change" href="{% url 'user_reservation_update' reservation.pk  %}">{% trans "Update" %}</a>
             {% elif reservation.status == 'p' %} 
             <a>{% trans "Done" %}</a>
             {% endif %}

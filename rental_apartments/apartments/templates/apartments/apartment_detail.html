@@ -4,34 +4,44 @@
 {% block content %}
     <h1>{{ object.name }}</h1>
     <ul>
-        <h3>{% trans "Adsress" %}: {{ object.address }}, {{ object.city }}</h3>
-        <h3>{% trans "Room type" %}: {{ object.apart_type }} / {% trans "Size" %}: {{ object.size }} / {% trans "room(s)" %} {{ object.room }} / {% trans "bed(s)" %} {{ object.bed }} / {% trans "sofa" %} {{ object.sofa }}</h3>
-        <h3>{% trans "Price" %}: {{ object.price }} Eur</h3>
-    <div class="container">
-        {% if apartment.photo %}
-            <img class="img-detail" src="{{ apartment.photo.url }}">
-        {% endif %}  
-        {% if apartment.photo_2 %}
-            <img class="img-detail" src="{{ apartment.photo_2.url }}">
-        {% endif %}  
-        {% if apartment.photo_3 %}
-          <img class="img-detail" src="{{ apartment.photo_3.url }}">  
-        {% endif %}  
-        {% if apartment.photo_4 %}
-            <img class="img-detail" src="{{ apartment.photo_4.url }}">
-        {% endif %}  
-        {% if apartment.photo_5 %}
-            <img class="img-detail" src="{{ apartment.photo_5.url }}">
-        {% endif %}  
-        {% if apartment.photo_6 %}
-            <img class="img-detail" src="{{ apartment.photo_6.url }}">
-        {% endif %}  
-    </div>
-    </ul>
-        <div class="description">
-            <p>{{ object.description }}</p>
+        <div class="container">
+            <h3>{% trans "Address" %}: {{ object.address }}, {{ object.city }}</h3>
+            <h3>{% trans "Room type" %}: {{ object.apart_type }} / {% trans "Size" %}: {{ object.size }} / {% trans "room(s)" %} {{ object.room }} / {% trans "bed(s)" %} {{ object.bed }} / {% trans "sofa" %} {{ object.sofa }}</h3>
+            <h3>{% trans "Price" %}: {{ object.price }} Eur</h3>
+            <h3><a class="button" href="{% url 'user_reservation_create' %}">{% trans "Make reservation" %}</a></h3>    <div class="container">
+            {% if apartment.photo %}<img class="img-detail" src="{{ apartment.photo.url }}">{% endif %}  
+            {% if apartment.photo_2 %}<img class="img-detail" src="{{ apartment.photo_2.url }}">{% endif %}  
+            {% if apartment.photo_3 %}<img class="img-detail" src="{{ apartment.photo_3.url }}">{% endif %}  
+            {% if apartment.photo_4 %}<img class="img-detail" src="{{ apartment.photo_4.url }}">{% endif %}  
+            {% if apartment.photo_5 %}<img class="img-detail" src="{{ apartment.photo_5.url }}">{% endif %}  
+            {% if apartment.photo_6 %}<img class="img-detail" src="{{ apartment.photo_6.url }}">{% endif %}  
+            <p class="description">{{ object.description }}</p>
         </div>
-        
-
-
+    </ul>
+    <h2>{% trans "Guests reviews" %}</h2>
+        {% if user.is_authenticated %}
+        <div class="review-form">
+            <p>{% trans "Please leave a review below if you were our guest" %}:</p>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <p><button class="button" type="submit">{% trans "Post review" %}</button></p>
+            </from>
+        </div>
+        {% endif %}
+        {% if aparment.reviews %}
+            {% for review in apartment.review.all %}
+            <div class="review">
+                <h4>{% if review.guest.profile.photo %}<img src="{{ review.guest.profile.photo.url }}">{% endif %}
+                    {{ review.guest }}
+                    <span class="float-right">{{ review.create_at }}</span></h4>
+                    <p>{{ review.comment }}</p>
+                    <div class="container">
+                        {% if review.photo_1 %}<img class="img-review" src="{{ review.photo_1.url }}">{% endif %}  
+                        {% if review.photo_2 %}<img class="img-review" src="{{ review.photo_2.url }}">{% endif %} 
+                        {% if review.photo_3 %}<img class="img-review" src="{{ review.photo_3.url }}">{% endif %}         
+                    </div>
+            </div 
+            {% endfor %}
+        {% endif %}
 {% endblock content %}

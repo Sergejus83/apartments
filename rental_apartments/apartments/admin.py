@@ -33,6 +33,12 @@ class GuestAdmin(admin.ModelAdmin):
         return obj.user.email
 
 
+class ApartmentReviewAdmin(admin.ModelAdmin):
+    list_display = ('apartment', 'guest', 'created_at')
+    
+
+
 admin.site.register(models.Apartment, ApartmentAdmin)
 admin.site.register(models.Guest, GuestAdmin)
 admin.site.register(models.Reservation, ReservationAdmin)
+admin.site.register(models.ApartmentReview, ApartmentReviewAdmin)

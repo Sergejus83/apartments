@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
+from django.utils.timezone import datetime
 
 User = get_user_model()
 
@@ -80,6 +80,48 @@ class Reservation(models.Model):
         self.total_nights = self.get_total_nights().days
         super().save(*args, **kwargs)
 
+    @property
+    def date_in_is_overdue(self):
+        if self.date_in and self.date_in < datetime.date(datetime.now()):
+            return True
+        return False
+
+    class Meta:
+        ordering = ['date_in']
+
+    @property
+    def date_out_is_overdue(self):
+        if self.date_out and self.date_out < datetime.date(datetime.now()):
+            return True
+        return False
+
     def __str__(self) -> str:
         return f'ID: {self.id}  ||  from {self.date_in} to {self.date_out}  ||  total: {self.total_nights}d./ {self.total_price} Eur'
     
+
+class ApartmentReview(models.Model):
+    apartment = models.ForeignKey(
+        Apartment, 
+        verbose_name=_("Apartment"), 
+        on_delete=models.CASCADE,
+        related_name='reviews'
+        )
+    guest = models.ForeignKey(
+        Guest, 
+        verbose_name=_("Guest"), 
+        on_delete=models.CASCADE,
+        related_name='apartment_reviews'
+        )
+    comment = models.TextField(_("Comment"))
+    created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
+    photo_1 = models.ImageField(_("photo_1"), upload_to='photo', blank=True, null=True)
+    photo_2 = models.ImageField(_("photo_2"), upload_to='photo', blank=True, null=True)
+    photo_3 = models.ImageField(_("photo_3"), upload_to='photo', blank=True, null=True)
+
+
+
+    def __str__(self):
+        return f"{self.guest.user} on {self.apartment} at {self.created_at}"
+
+    class Meta:
+        ordering = ('-created_at', )
