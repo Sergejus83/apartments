@@ -4,9 +4,11 @@ from django.utils.translation import gettext_lazy as _
 from . models import Apartment, Guest, Reservation, User
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from . forms import ReservationForm, ReservationUpdateForm
+from . forms import ReservationForm, ReservationUpdateForm, AparmentReviewForm
 from django.urls import reverse, reverse_lazy
 from django.contrib import messages
+from django.views.generic.edit import FormMixin
+
 # from django.contrib.auth import get_user_model
 
 # User = get_user_model()
@@ -41,9 +43,35 @@ class ApartmentListView(ListView):
 
 
 
-class ApartmentDetailView(DetailView):
+class ApartmentDetailView(FormMixin, DetailView):
     model = Apartment
     template_name = 'apartments/apartment_detail.html'
+    form_class = AparmentReviewForm
+
+    def get_success_url(self):
+        return reverse('apartment', kwargs={'pk': self.get_object().id})
+
+    def post(self, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            messages.error(self.request, "You posting too much. Posting limit 1 review/hour")
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        form.instance.apartment = self.get_object()
+        form.instance.guest = self.request.user
+        form.save()
+        messages.success(self.request, _("Your review was posted!"))
+        return super().form_valid(form)
+
+    def get_initial(self):
+        return {
+            'apartment': self.get_object(),
+            'guest': self.request.user.guest,
+        }
 
 
 class UserReservationListView(LoginRequiredMixin, ListView):
@@ -52,7 +80,7 @@ class UserReservationListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(guest=self.request.user.guest) # .order_by('-date_in')
+        queryset = queryset.filter(guest=self.request.user.guest) #.order_by('-date_in')
         return queryset
 
 

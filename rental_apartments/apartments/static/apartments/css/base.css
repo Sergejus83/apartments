@@ -61,7 +61,7 @@ header .container span {
 }
 
 body {
-    background-color: rgb(168, 205, 232);
+    background-color: rgb(120, 173, 226);
     margin: 0;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     display: flex;
@@ -73,11 +73,11 @@ body {
 header a {
     display: inline-block;
     color: white;
-    padding: 1rem;
+    padding: 1.5rem;
     text-decoration:underline;
 }
 header a:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 h3 a:hover {
@@ -85,12 +85,10 @@ h3 a:hover {
 }
 h1, h2, h3, p {
     padding: 0.5rem 1rem;
-    margin: 0.5rem 1rem;
-}
-
-h1, h2 {
+    margin: 1rem 1rem;
     background-color: rgba(12, 44, 107, 0.1);
 }
+
 
 h3 {
     color: black;
@@ -99,9 +97,10 @@ h3 {
 
 .container {
     background-color: rgb(180, 182, 237, 0.2);
-    /* max-width: 1200px;
-    min-width: 480px; */
-    /* margin: 5rem, auto; */
+    max-width: 1500px;
+    min-width: 480px;
+    margin: auto;
+    padding: auto;
 }
 
 .red {
@@ -111,8 +110,6 @@ h3 {
 .spacer {
     flex-grow: 1;
 }
-
-
 
 ul li.apartment img {
     max-width: 100%;
@@ -161,18 +158,31 @@ table {
 .table-grid {
     display: grid;
     padding: 0.5rem;
+
 }
 
 .my-reservation-table {
     grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+    border: 0.5px solid rgb(27, 4, 129);
+    border-bottom: 3px solid rgb(0, 0, 0);
 }
 
 .table-grid-cell {
     display: inline-block;
     align-self: stretch;
     justify-self: stretch;
-    background-color: #ccc;
+    background-color: rgb(168, 176, 176);
     padding: 0.5rem;
+    border: 0.2px solid rgb(255, 255, 255);
+}
+
+.center {
+    text-align: center;
+}
+
+.dark {
+    background-color: rgb(31, 31, 74);
+    color: rgb(255, 255, 255);
 }
 .form-grid {
     grid-template-columns: 10rem auto;
@@ -195,30 +205,46 @@ footer {
     display: flex;
     align-content: stretch;
     display: inline-block;
-    padding: 0.5rem;
+    padding: 2rem;
     margin: 0.5rem; 
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 1rem;
-}
-
-.user-profile-photo {
-    max-width: 20rem;
-    border-radius: 5rem;
+    /* border: 1px solid rgb(0, 0, 0);
+    border-radius: 1rem; */
 }
 
 
-.apartment-review h4 img {
-    max-height: 1.5rem;
+.apartment-review h4 {
+    display: block;
+    padding: 0.5rem 1rem;
+    margin: 0;
+}
+
+.apartment-review img {
+    max-height: 5rem;
     float: left;
     margin-right: 0.5rem;
     border-radius: 0.5rem;
 }
 
-.apartment-review-form label {
+.review-form label {
     display: none;
 }
 
 .review-form {
     background-color: rgba(235, 221, 214, 0.3);
-    border-bottom: 3px solid rgb(17, 0, 255);
+    border-bottom: 3px solid rgb(114, 197, 105);
+}
+
+.float-right {
+    float: right;
+}
+
+.review-user-photo img {
+    max-width: 200px;
+    min-width: 200px;
+    border-radius: 2rem;
+}
+
+.user-profile-photo {
+    max-width: 20rem;
+    border-radius: 3rem;
 }

@@ -29,17 +29,6 @@ class ReservationForm(forms.ModelForm):
 
         if reservations.count() > 0:
             raise ValidationError(_("Sorry! This apartment already booked on these dates!"))
-        # elif reservation_date.count() < 0:
-        #     raise ValidationError(_("Sorry! the date is not correct!"))
-
-        
-    # def invalid_date(self):
-    #     cleaned_data = super().clean()
-    #     date_in = date(cleaned_data.get("date_in"))
-    #     today = date.today()
-    #     if date_in < today:
-    #         raise ValidationError(_("Sorry! the date is not correct!"))
-
 
     class Meta:
         model = Reservation
@@ -61,7 +50,7 @@ class AparmentReviewForm(forms.ModelForm):
             guest = self.cleaned_data.get("guest")
             recent_posts = ApartmentReview.objects.filter(
                 guest=guest,
-                created_at_gte=(datetime.utcnow()-timedelta(hours=1))
+                created_at__gte=(datetime.utcnow()-timedelta(hours=1))
             )
             if recent_posts:
                 return False
@@ -69,10 +58,8 @@ class AparmentReviewForm(forms.ModelForm):
             
     class Meta:
         model = ApartmentReview
-        fields = ('apartment', 'guest', 'comment')
+        fields = ('apartment', 'guest', 'comment', 'photo_1', 'photo_2', 'photo_3',)
         widgets = {
             'apartment': forms.HiddenInput(),
             'guest': forms.HiddenInput(),
         }
-
-

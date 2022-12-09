@@ -3,8 +3,8 @@
 {% block title %} {% trans "Welocome to" %} {{block.super}}{% endblock title %}
 {% block content %}
 <h1>{% trans "The best Apartments" %}</h1>
+<h3>{% trans "Welcome to the best apartments" %}</h3>
     <ul>
-        <p>{% trans "Welcome to the best apartments" %}</p>
         <li>{% trans "Total apartments we have" %}: {{ apartment_count }}</li>
         <li>{% trans "Total reservations made" %}: {{ reservation_count }}</li>
         <li>{% trans "Total unique guests registered" %}: {{ user_count }}</li>

@@ -1,5 +1,5 @@
 {% extends 'apartments/base.html' %}
-{% load static i18n  %}
+{% load i18n  %}
 {% block title %}{% trans "Apartment" %}{% endblock title %}
 {% block content %}
     <h1>{{ object.name }}</h1>
@@ -19,29 +19,33 @@
         </div>
     </ul>
     <h2>{% trans "Guests reviews" %}</h2>
+    {% if apartment.reviews %}
+        {% for review in apartment.reviews.all %}
+            <div class="apartment-review review-form">
+                <h4>
+                    {% if review.guest.profile.photo %}<img class="review-user-photo" src="{{ review.guest.profile.photo.url }}">{% endif %}
+                    {{ review.guest }}
+                    <span class="float-right">{{ review.created_at }}</span>
+                </h4>
+                    <p>{{ review.comment }}</p>
+                    <p class="container">
+                        {% if review.photo_1 %}<img class="apartment-review" src="{{ review.photo_1.url }}">{% endif %}  
+                        {% if review.photo_2 %}<img class="img-detail" src="{{ review.photo_2.url }}">{% endif %} 
+                        {% if review.photo_3 %}<img class="img-detail" src="{{ review.photo_3.url }}">{% endif %}  
+                    </p>
+            </div>
+            {% endfor %}
+        {% endif %}
         {% if user.is_authenticated %}
         <div class="review-form">
-            <p>{% trans "Please leave a review below if you were our guest" %}:</p>
+            <h3>{% trans "Please leave a review below if you were our guest" %}:</h3>
             <form action="" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
+                <div>{{ profile_form.photo.label }}</div>
+                <div>{{ profile_form.photo }}</div>
                 <p><button class="button" type="submit">{% trans "Post review" %}</button></p>
-            </from>
+            </form>
         </div>
-        {% endif %}
-        {% if aparment.reviews %}
-            {% for review in apartment.review.all %}
-            <div class="review">
-                <h4>{% if review.guest.profile.photo %}<img src="{{ review.guest.profile.photo.url }}">{% endif %}
-                    {{ review.guest }}
-                    <span class="float-right">{{ review.create_at }}</span></h4>
-                    <p>{{ review.comment }}</p>
-                    <div class="container">
-                        {% if review.photo_1 %}<img class="img-review" src="{{ review.photo_1.url }}">{% endif %}  
-                        {% if review.photo_2 %}<img class="img-review" src="{{ review.photo_2.url }}">{% endif %} 
-                        {% if review.photo_3 %}<img class="img-review" src="{{ review.photo_3.url }}">{% endif %}         
-                    </div>
-            </div 
-            {% endfor %}
         {% endif %}
 {% endblock content %}

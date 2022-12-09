@@ -36,7 +36,7 @@ def register(request):
         if not error:
             User.objects.create_user(username=username, email=email, password=password)
             messages.success(request, _('Successful! New user "') + f"{ username }" + _( '" created!'))
-            return redirect('login')
+            return redirect('update_profile')
             
     return render(request, 'user_profile/register.html')
 

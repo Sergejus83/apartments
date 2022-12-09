@@ -107,7 +107,7 @@ class ApartmentReview(models.Model):
         related_name='reviews'
         )
     guest = models.ForeignKey(
-        Guest, 
+        User, 
         verbose_name=_("Guest"), 
         on_delete=models.CASCADE,
         related_name='apartment_reviews'
