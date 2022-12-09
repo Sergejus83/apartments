@@ -1,0 +1,399 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-09 15:36+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
+#: .\apartments\admin.py:23
+msgid "Last name"
+msgstr "Pavarde"
+
+#: .\apartments\admin.py:27
+msgid "First name"
+msgstr "Vardas"
+
+#: .\apartments\admin.py:31
+msgid "Email"
+msgstr "el.pastas"
+
+#: .\apartments\forms.py:31
+msgid "Sorry! This apartment already booked on these dates!"
+msgstr "Atsiprašome! Šis butas šiomis dienomis jau užsakytas!"
+
+#: .\apartments\models.py:10
+msgid "name"
+msgstr "Pavadinimas"
+
+#: .\apartments\models.py:11
+msgid "type"
+msgstr "Tipas"
+
+#: .\apartments\models.py:12
+msgid "description"
+msgstr "Aprasymas"
+
+#: .\apartments\models.py:13
+msgid "city"
+msgstr "Miestas"
+
+#: .\apartments\models.py:14
+msgid "address"
+msgstr "Adresas"
+
+#: .\apartments\models.py:15
+msgid "size"
+msgstr "Dydis"
+
+#: .\apartments\models.py:16
+#: .\apartments\templates\apartments\apartment_detail.html:9
+msgid "room(s)"
+msgstr "Kambarys(iai)"
+
+#: .\apartments\models.py:17
+#: .\apartments\templates\apartments\apartment_detail.html:9
+msgid "bed(s)"
+msgstr "Lova(os)"
+
+#: .\apartments\models.py:18
+#: .\apartments\templates\apartments\apartment_detail.html:9
+msgid "sofa"
+msgstr "Sofa"
+
+#: .\apartments\models.py:19 .\apartments\models.py:61
+msgid "price"
+msgstr "kaina"
+
+#: .\apartments\models.py:20 .\apartments\models.py:21
+#: .\apartments\models.py:22 .\apartments\models.py:23
+#: .\apartments\models.py:24 .\apartments\models.py:25
+msgid "photo"
+msgstr "Nuotrauka"
+
+#: .\apartments\models.py:34
+msgid "user"
+msgstr "Vartotojas"
+
+#: .\apartments\models.py:38
+msgid "phone number"
+msgstr "Telefono numeris"
+
+#: .\apartments\models.py:47
+msgid "guest"
+msgstr "svečias"
+
+#: .\apartments\models.py:53
+msgid "apartment"
+msgstr "butas"
+
+#: .\apartments\models.py:57
+msgid "date of reservation"
+msgstr "Rezervaciojo data"
+
+#: .\apartments\models.py:58
+msgid "date in"
+msgstr "Atvykimo diena"
+
+#: .\apartments\models.py:59
+msgid "date out"
+msgstr "Isvykimo diena"
+
+#: .\apartments\models.py:60
+msgid "total nights"
+msgstr ""
+
+#: .\apartments\models.py:62
+msgid "total price"
+msgstr "Is viso kaina"
+
+#: .\apartments\models.py:64
+msgid "reserved"
+msgstr "rezervuota"
+
+#: .\apartments\models.py:65
+msgid "canceled"
+msgstr "atsaukta"
+
+#: .\apartments\models.py:66
+msgid "available"
+msgstr "prieinama"
+
+#: .\apartments\models.py:67
+msgid "past"
+msgstr "praeitis"
+
+#: .\apartments\models.py:68
+msgid "no info"
+msgstr "nera info"
+
+#: .\apartments\models.py:70
+msgid "status"
+msgstr "statusas"
+
+#: .\apartments\models.py:105
+#: .\apartments\templates\apartments\apartment_detail.html:3
+#: .\apartments\templates\apartments\user_reservation_delete.html:9
+msgid "Apartment"
+msgstr "Butas"
+
+#: .\apartments\models.py:111
+msgid "Guest"
+msgstr "Svecias"
+
+#: .\apartments\models.py:115
+msgid "Comment"
+msgstr "Komentaras"
+
+#: .\apartments\models.py:116
+msgid "Created at"
+msgstr "Sukurta"
+
+#: .\apartments\models.py:117
+msgid "photo_1"
+msgstr ""
+
+#: .\apartments\models.py:118
+msgid "photo_2"
+msgstr ""
+
+#: .\apartments\models.py:119
+msgid "photo_3"
+msgstr ""
+
+#: .\apartments\templates\apartments\apartment_detail.html:8
+msgid "Address"
+msgstr "Adresas"
+
+#: .\apartments\templates\apartments\apartment_detail.html:9
+msgid "Room type"
+msgstr "Kambario tipas"
+
+#: .\apartments\templates\apartments\apartment_detail.html:9
+msgid "Size"
+msgstr "Dydis"
+
+#: .\apartments\templates\apartments\apartment_detail.html:10
+msgid "Price"
+msgstr "Kaina"
+
+#: .\apartments\templates\apartments\apartment_detail.html:11
+msgid "Make reservation"
+msgstr "Padaryti rezervacija"
+
+#: .\apartments\templates\apartments\apartment_detail.html:21
+msgid "Guests reviews"
+msgstr "Svečių atsiliepimai"
+
+#: .\apartments\templates\apartments\apartment_detail.html:41
+msgid "Please leave a review below if you were our guest"
+msgstr "Jei buvote mūsų svečias, palikite atsiliepimą žemiau"
+
+#: .\apartments\templates\apartments\apartment_detail.html:47
+msgid "Post review"
+msgstr "Paskelbti apžvalgą"
+
+#: .\apartments\templates\apartments\apartment_list.html:3
+#: .\apartments\templates\apartments\base.html:12
+#: .\apartments\templates\apartments\base.html:20
+#: .\apartments\templates\apartments\base.html:52
+msgid "Apartments"
+msgstr "Butai"
+
+#: .\apartments\templates\apartments\apartment_list.html:5
+msgid "Apartments available"
+msgstr "Galimi butai"
+
+#: .\apartments\templates\apartments\base.html:19
+msgid "Home"
+msgstr "Pradžia"
+
+#: .\apartments\templates\apartments\base.html:23
+msgid "Profile "
+msgstr "Profilis"
+
+#: .\apartments\templates\apartments\base.html:24
+msgid "My reservations"
+msgstr "Mano rezervacios"
+
+#: .\apartments\templates\apartments\base.html:29
+msgid "Admin"
+msgstr "Adminas"
+
+#: .\apartments\templates\apartments\base.html:31
+msgid "Logout"
+msgstr "Atsijungti"
+
+#: .\apartments\templates\apartments\base.html:33
+msgid "Register"
+msgstr "Registruotis"
+
+#: .\apartments\templates\apartments\base.html:34
+msgid "Login"
+msgstr "Prisijungti"
+
+#: .\apartments\templates\apartments\index.html:3
+#: .\apartments\templates\apartments\user_reservation_create.html:3
+msgid "Welocome to"
+msgstr "Sveiki atvykę į"
+
+#: .\apartments\templates\apartments\index.html:5
+msgid "The best Apartments"
+msgstr "Geriausi Butai"
+
+#: .\apartments\templates\apartments\index.html:6
+msgid "Welcome to the best apartments"
+msgstr "Sveiki atvykę į Geriausius Butus"
+
+#: .\apartments\templates\apartments\index.html:8
+msgid "Total apartments we have"
+msgstr "Iš viso turime butų"
+
+#: .\apartments\templates\apartments\index.html:9
+msgid "Total reservations made"
+msgstr "Iš viso atlikta rezervacijų"
+
+#: .\apartments\templates\apartments\index.html:10
+msgid "Total unique guests registered"
+msgstr "Iš viso užregistruotų unikalių svečių"
+
+#: .\apartments\templates\apartments\index.html:11
+msgid "Total visitors seen our website"
+msgstr "Iš viso lankytojų, kurie matė mūsų svetainę"
+
+#: .\apartments\templates\apartments\user_reservation_create.html:5
+msgid "\"The best Apartments\" - Reservation page"
+msgstr "\"Geriausi apartamentai\" rezervavimo puslapis"
+
+#: .\apartments\templates\apartments\user_reservation_create.html:16
+msgid "Reservation"
+msgstr "Rezervacija"
+
+#: .\apartments\templates\apartments\user_reservation_delete.html:3
+msgid "Cancel reservation from "
+msgstr "Atšaukti rezervaciją nuo "
+
+#: .\apartments\templates\apartments\user_reservation_delete.html:5
+msgid "Reservation cancellation"
+msgstr "Rezervacijos atšaukimas"
+
+#: .\apartments\templates\apartments\user_reservation_delete.html:8
+msgid "Do you sure you want to cancel your reservation now?"
+msgstr "Ar tikrai norite atšaukti rezervaciją dabar?"
+
+#: .\apartments\templates\apartments\user_reservation_delete.html:11
+msgid "YES"
+msgstr "TAIP"
+
+#: .\apartments\templates\apartments\user_reservation_delete.html:12
+msgid "NO"
+msgstr "NE"
+
+#: .\apartments\templates\apartments\user_reservation_list.html:3
+msgid "Reservation history of "
+msgstr "Rezervacijų istorija"
+
+#: .\apartments\templates\apartments\user_reservation_list.html:5
+msgid "Reservation History"
+msgstr "Rezervacijų istorija"
+
+#: .\apartments\templates\apartments\user_reservation_list.html:6
+msgid "Make new reservation"
+msgstr "Nauja istorija"
+
+#: .\apartments\templates\apartments\user_reservation_list.html:8
+msgid "Apartment name"
+msgstr "Buto pavadinimas"
+
+#: .\apartments\templates\apartments\user_reservation_list.html:9
+msgid "Reserved date"
+msgstr "Rezervacijos data"
+
+#: .\apartments\templates\apartments\user_reservation_list.html:10
+msgid "Check-in"
+msgstr "Įsiregistruoti"
+
+#: .\apartments\templates\apartments\user_reservation_list.html:11
+msgid "Check-out"
+msgstr "Išsiregistravimas"
+
+#: .\apartments\templates\apartments\user_reservation_list.html:12
+msgid "Total nights"
+msgstr "Iš viso naktų"
+
+#: .\apartments\templates\apartments\user_reservation_list.html:13
+msgid "Total price"
+msgstr "Visa kaina"
+
+#: .\apartments\templates\apartments\user_reservation_list.html:14
+msgid "Status"
+msgstr "Statusas"
+
+#: .\apartments\templates\apartments\user_reservation_list.html:15
+msgid "Action"
+msgstr "Veiksmas"
+
+#: .\apartments\templates\apartments\user_reservation_list.html:26
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#: .\apartments\templates\apartments\user_reservation_list.html:27
+msgid "Update"
+msgstr "Atnaujinti"
+
+#: .\apartments\templates\apartments\user_reservation_list.html:29
+msgid "Done"
+msgstr "ivikdyta"
+
+#: .\apartments\templates\apartments\user_reservation_update.html:3
+msgid "Update reservation in "
+msgstr "Atnauinti rezervacija "
+
+#: .\apartments\templates\apartments\user_reservation_update.html:5
+msgid "Updating reservation info"
+msgstr "Atnauinti rezervacijos info"
+
+#: .\apartments\templates\apartments\user_reservation_update.html:11
+msgid "If you want to change the reservation for"
+msgstr "Jei norite pakeisti rezervaciją už"
+
+#: .\apartments\templates\apartments\user_reservation_update.html:12
+msgid "Please select new dates:"
+msgstr "Pasirinkite naujas datas:"
+
+#: .\apartments\templates\apartments\user_reservation_update.html:17
+msgid "Click the button change your reservation"
+msgstr ""
+
+#: .\apartments\templates\apartments\user_reservation_update.html:18
+msgid "Change reservation"
+msgstr "Spustelėkite mygtuką pakeisti rezervaciją"
+
+#: .\apartments\views.py:67
+msgid "Your review was posted!"
+msgstr "Jūsų apžvalga buvo paskelbta!"
+
+#: .\apartments\views.py:96
+msgid "The apartment has been reserved!"
+msgstr "Butas rezervuotas!"
+
+#: .\apartments\views.py:109
+msgid "Reservation was changed!"
+msgstr "Rezervacija pakeista!"
+
+#: .\apartments\views.py:130
+msgid "Reservation CANCELLED!"
+msgstr "Rezervacija ATŠAUKTA!"

@@ -211,6 +211,12 @@ footer {
     border-radius: 1rem; */
 }
 
+.apartment-review img {
+    max-height: 5rem;
+    float: left;
+    margin-right: 0.5rem;
+    border-radius: 0.5rem;
+}
 
 .apartment-review h4 {
     display: block;
@@ -218,12 +224,6 @@ footer {
     margin: 0;
 }
 
-.apartment-review img {
-    max-height: 5rem;
-    float: left;
-    margin-right: 0.5rem;
-    border-radius: 0.5rem;
-}
 
 .review-form label {
     display: none;
@@ -239,8 +239,8 @@ footer {
 }
 
 .review-user-photo img {
-    max-width: 200px;
-    min-width: 200px;
+    max-width: 1500px;
+    min-width: 1500px;
     border-radius: 2rem;
 }
 

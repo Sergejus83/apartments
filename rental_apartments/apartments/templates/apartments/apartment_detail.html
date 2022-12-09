@@ -27,12 +27,12 @@
                     {{ review.guest }}
                     <span class="float-right">{{ review.created_at }}</span>
                 </h4>
-                    <p>{{ review.comment }}</p>
-                    <p class="container">
-                        {% if review.photo_1 %}<img class="apartment-review" src="{{ review.photo_1.url }}">{% endif %}  
-                        {% if review.photo_2 %}<img class="img-detail" src="{{ review.photo_2.url }}">{% endif %} 
-                        {% if review.photo_3 %}<img class="img-detail" src="{{ review.photo_3.url }}">{% endif %}  
-                    </p>
+                <p>{{ review.comment }}</p>
+                <p>
+                    {% if review.photo_1 %}<img class="apartment-review" src="{{ review.photo_1.url }}">{% endif %}  
+                    {% if review.photo_2 %}<img class="apartment-review" src="{{ review.photo_2.url }}">{% endif %} 
+                    {% if review.photo_3 %}<img class="apartment-review" src="{{ review.photo_3.url }}">{% endif %}  
+                </p>
             </div>
             {% endfor %}
         {% endif %}

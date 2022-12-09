@@ -31,6 +31,17 @@
                     <a href="{% url 'register' %}">{% trans "Register" %}</a>
                     <a href="{% url 'login' %}{% if not 'accounts/' in request.path %}?next={{ request.path }}{% endif %}">{% trans "Login" %}</a>
                 {% endif %}
+                <span>
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ request.path }}">
+                        <select name="language" onchange="this.form.submit()">
+                            {% for lang in LANGUAGES %}
+                                <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected{% endif %}>{{ lang.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </span>
             {% endblock nav %}
         </div>
     </header>

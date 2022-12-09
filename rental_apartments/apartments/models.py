@@ -121,7 +121,7 @@ class ApartmentReview(models.Model):
 
 
     def __str__(self):
-        return f"{self.guest.user} on {self.apartment} at {self.created_at}"
+        return f"{self.guest} on {self.apartment} at {self.created_at}"
 
     class Meta:
         ordering = ('-created_at', )
