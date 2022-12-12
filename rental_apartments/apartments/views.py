@@ -8,6 +8,7 @@ from . forms import ReservationForm, ReservationUpdateForm, AparmentReviewForm
 from django.urls import reverse, reverse_lazy
 from django.contrib import messages
 from django.views.generic.edit import FormMixin
+from django.db.models import Q
 
 
 def index(request):
@@ -37,6 +38,15 @@ class ApartmentListView(ListView):
         context['apartment_count'] = self.get_queryset().count()
         return context
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search = self.request.GET.get('search')
+        if search:
+            queryset = queryset.filter(Q(city__icontains=search))
+        apartment_id = self.request.GET.get('genre_id')
+        if apartment_id:
+            queryset = queryset.filter(city__id=apartment_id)
+        return queryset
 
 
 class ApartmentDetailView(FormMixin, DetailView):
