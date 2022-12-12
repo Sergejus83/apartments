@@ -9,10 +9,6 @@ from django.urls import reverse, reverse_lazy
 from django.contrib import messages
 from django.views.generic.edit import FormMixin
 
-# from django.contrib.auth import get_user_model
-
-# User = get_user_model()
-
 
 def index(request):
     apartment_count = Apartment.objects.count()
@@ -70,7 +66,7 @@ class ApartmentDetailView(FormMixin, DetailView):
     def get_initial(self):
         return {
             'apartment': self.get_object(),
-            'guest': self.request.user.guest,
+            # 'guest': self.request.user.guest,
         }
 
 

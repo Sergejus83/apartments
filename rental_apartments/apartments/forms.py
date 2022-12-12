@@ -46,14 +46,14 @@ class ReservationUpdateForm(forms.ModelForm):
 class AparmentReviewForm(forms.ModelForm):
     def is_valid(self) -> bool:
         valid = super().is_valid()
-        # if valid:
-            # guest = self.cleaned_data.get("guest")
-            # recent_posts = ApartmentReview.objects.filter(
-            #     guest=guest,
-            #     created_at__gte=(datetime.utcnow()-timedelta(hours=1))
-            # )
-            # if recent_posts:
-            #     return False
+        if valid:
+            guest = self.cleaned_data.get("guest")
+            recent_posts = ApartmentReview.objects.filter(
+                guest=guest,
+                created_at__gte=(datetime.utcnow()-timedelta(hours=1))
+            )
+            if recent_posts:
+                return False
         return valid
             
     class Meta:

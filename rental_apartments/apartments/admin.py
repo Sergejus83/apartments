@@ -37,7 +37,6 @@ class ApartmentReviewAdmin(admin.ModelAdmin):
     list_display = ('apartment', 'guest', 'created_at', 'photo_1', 'photo_2', 'photo_3',)
     
 
-
 admin.site.register(models.Apartment, ApartmentAdmin)
 admin.site.register(models.Guest, GuestAdmin)
 admin.site.register(models.Reservation, ReservationAdmin)
