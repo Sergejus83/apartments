@@ -1,14 +1,25 @@
 {% extends 'apartments/base.html' %}
-{% load i18n %}
+{% load static i18n %}
 {% block title %} {% trans "Welocome to" %} {{block.super}}{% endblock title %}
 {% block content %}
 <h1>{% trans "The best Apartments" %}</h1>
-<h3>{% trans "Welcome to the best apartments" %}</h3>
+    <h3 class="text-left">{% trans "Welcome to the best apartments" %}</h3>
     <ul>
         <li>{% trans "Total apartments we have" %}: {{ apartment_count }}</li>
         <li>{% trans "Total reservations made" %}: {{ reservation_count }}</li>
         <li>{% trans "Total unique guests registered" %}: {{ user_count }}</li>
         <li>{% trans "Total visitors seen our website" %}: {{ visit_count }}</li>
-
     </ul>
+    <div class="table-grid grid-photo">
+        <img class="img-title" src="{% static 'apartments\css\rental_apartments\media\photo\vilnius_city.jpg' %}">
+        <img class="img-title" src="{% static 'apartments\css\rental_apartments\media\photo\vilnius_gediminas_tower.jpg' %}">
+        <img class="img-title" src="{% static 'apartments\css\rental_apartments\media\photo\plunge.jpg' %}">
+        <img class="img-title" src="{% static 'apartments\css\rental_apartments\media\photo\visaginas_4.jpg' %}">
+        <img class="img-title" src="{% static 'apartments\css\rental_apartments\media\photo\kaunas_city.jpg' %}">
+        <img class="img-title" src="{% static 'apartments\css\rental_apartments\media\photo\kaunas_city_2.jpg' %}">
+        <img class="img-title" src="{% static 'apartments\css\rental_apartments\media\photo\klaipeda.jpg' %}">
+        <img class="img-title" src="{% static 'apartments\css\rental_apartments\media\photo\siauliai.jpg' %}">
+        <img class="img-title" src="{% static 'apartments\css\rental_apartments\media\photo\klaipeda_2.jpg' %}">
+        <img class="img-title" src="{% static 'apartments\css\rental_apartments\media\photo\palanga.jpg' %}">
+    </div>
 {% endblock content %}

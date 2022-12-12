@@ -17,6 +17,16 @@
     border-color: rgb(1, 66, 1);
 }
 
+body {
+    background-color: rgb(126, 188, 249);
+    margin: 0;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
 .button {
     background-color: rgb(104, 150, 219);
     color: rgb(0, 0, 0);
@@ -60,15 +70,6 @@ header .container span {
     padding: 0.5rem;
 }
 
-body {
-    background-color: rgb(120, 173, 226);
-    margin: 0;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    min-height: 100vh;
-}
 
 header a {
     display: inline-block;
@@ -80,20 +81,29 @@ header a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-h3 a:hover {
+/* h3 a:hover {
     background-color: rgba(255, 255, 255, 0.5);
-}
+} */
 h1, h2, h3, p {
     padding: 0.5rem 1rem;
     margin: 1rem 1rem;
-    background-color: rgba(12, 44, 107, 0.1);
+    /* background-color: rgba(12, 44, 107, 0.1); */
 }
-
 
 h3 {
     color: black;
-    background-color: rgba(253, 253, 253, 0.1);
+    text-align: center;
 }
+
+.text-left {
+    text-align: left;
+}
+
+
+/* h3 {
+    color: black;
+    background-color: rgba(253, 253, 253, 0.1);
+} */
 
 .container {
     background-color: rgb(180, 182, 237, 0.2);
@@ -137,12 +147,21 @@ ul.apartment_list li.apartment {
 .description {
     display: block;
     padding: 0.5rem 1rem;
-    margin: 0;
+    margin: 1rem;
 }
+.description:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
 
 .img-detail{
     max-width: 400px;
     min-width: 400px;
+}
+
+.img-detail:hover{
+    max-width: 450px;
+    min-width: 450px;
 }
 
 table {
@@ -163,7 +182,7 @@ table {
 
 .my-reservation-table {
     grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
-    border: 0.5px solid rgb(27, 4, 129);
+    /* border: 0.5px solid rgb(27, 4, 129); */
     border-bottom: 3px solid rgb(0, 0, 0);
 }
 
@@ -203,26 +222,38 @@ table {
 
 footer {
     display: flex;
-    align-content: stretch;
     display: inline-block;
-    padding: 2rem;
-    margin: 0.5rem; 
-    /* border: 1px solid rgb(0, 0, 0);
-    border-radius: 1rem; */
-}
-
-.apartment-review img {
-    max-height: 5rem;
-    float: left;
-    margin-right: 0.5rem;
-    border-radius: 0.5rem;
 }
 
 .apartment-review h4 {
     display: block;
     padding: 0.5rem 1rem;
-    margin: 0;
+    margin: 1rem;
 }
+
+.user-profile-photo {
+    max-width: 20rem;
+    border-radius: 3rem;
+}
+.review-user-photo {
+    max-width: 7rem;
+    /* min-width: 1500px; */
+    border-radius: 1rem;
+}
+
+.review-apartment-photo {
+    max-width: 20rem;
+    max-height: 400px;
+    /* min-width: 1500px; */
+    border-radius: 0.5rem;
+}
+
+/* .apartment-review {
+    max-height: 10rem;
+    float: none;
+    margin-right: 0.5rem;
+    border-radius: 0.5rem;
+} */
 
 
 .review-form label {
@@ -230,21 +261,26 @@ footer {
 }
 
 .review-form {
-    background-color: rgba(235, 221, 214, 0.3);
-    border-bottom: 3px solid rgb(114, 197, 105);
+    /* background-color: rgba(255, 255, 255, 0.1); */
+    border-bottom: 3px solid rgb(250, 250, 250);
 }
-
+ 
 .float-right {
     float: right;
 }
 
-.review-user-photo img {
-    max-width: 1500px;
-    min-width: 1500px;
-    border-radius: 2rem;
+body {
+    background-color: #cccccc;
+    background-image: url("rental_apartments\media\photo\vilnius_gediminas_tower.jpg");
+
 }
 
-.user-profile-photo {
-    max-width: 20rem;
-    border-radius: 3rem;
+.img-title {
+    max-height: 200px;
+    margin: 0.5rem 0.5rem;
+}
+
+.grid-photo {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
 }

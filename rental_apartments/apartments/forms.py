@@ -32,7 +32,7 @@ class ReservationForm(forms.ModelForm):
 
     class Meta:
         model = Reservation
-        fields = ('apartment', 'date_in', 'date_out', 'price')
+        fields = ('apartment', 'date_in', 'date_out')
         widgets = {'date_in': DateInput(), 'date_out': DateInput()}
 
 
@@ -46,19 +46,19 @@ class ReservationUpdateForm(forms.ModelForm):
 class AparmentReviewForm(forms.ModelForm):
     def is_valid(self) -> bool:
         valid = super().is_valid()
-        if valid:
-            guest = self.cleaned_data.get("guest")
-            recent_posts = ApartmentReview.objects.filter(
-                guest=guest,
-                created_at__gte=(datetime.utcnow()-timedelta(hours=1))
-            )
-            if recent_posts:
-                return False
+        # if valid:
+            # guest = self.cleaned_data.get("guest")
+            # recent_posts = ApartmentReview.objects.filter(
+            #     guest=guest,
+            #     created_at__gte=(datetime.utcnow()-timedelta(hours=1))
+            # )
+            # if recent_posts:
+            #     return False
         return valid
             
     class Meta:
         model = ApartmentReview
-        fields = ('apartment', 'guest', 'comment', 'photo_1', 'photo_2', 'photo_3',)
+        fields = ('apartment', 'guest', 'comment', 'photo_1', 'photo_2', 'photo_3')
         widgets = {
             'apartment': forms.HiddenInput(),
             'guest': forms.HiddenInput(),

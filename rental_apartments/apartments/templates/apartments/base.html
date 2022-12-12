@@ -3,7 +3,6 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 <html lang="{{ LANGUAGE_CODE }}">
-{% comment %} <html lang="en"> {% endcomment %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,7 +22,6 @@
                     <a href="{% url 'user_reservations' %}">{% trans "My reservations" %}</a>
                     <span></span>
                     {% if user.is_superuser or user.is_staff %}
-                        {% comment %} <a href="{% url 'reservations' %}">{% trans "Reservations" %}</a> {% endcomment %}
                         <a href="{% url 'admin:index' %}">{% trans "Admin" %}</a>
                     {% endif %}
                     <a href="{% url 'logout' %}">{% trans "Logout" %}</a>
@@ -49,7 +47,7 @@
         <div class = "container">
             {% if messages %}
                 {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
                 {% endfor %}
             {% endif %}
             {% block content %}
@@ -58,7 +56,7 @@
     </main>
     <footer>
         <div class="container">
-            <p>(c) 2022 {% trans "Apartments" %}</p>
+            {% block footer %}<p>(c) 2022 {% trans "Apartments" %}</p>{% endblock footer %}
         </div>
     </footer>
 </body>

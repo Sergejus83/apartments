@@ -34,7 +34,7 @@ class GuestAdmin(admin.ModelAdmin):
 
 
 class ApartmentReviewAdmin(admin.ModelAdmin):
-    list_display = ('apartment', 'guest', 'created_at')
+    list_display = ('apartment', 'guest', 'created_at', 'photo_1', 'photo_2', 'photo_3',)
     
 
 
