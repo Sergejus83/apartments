@@ -6,13 +6,13 @@
 }
 
 .alert-error {
-    border-color: rgb(255, 0, 0);
+    border-color: rgb(255, 255, 255);
     background-color: rgba(240, 143, 143, 0.5);
     color: rgb(180, 0, 0);
 }
 
 .alert-success {
-    background-color: rgb(162, 231, 162);
+    background-color: rgba(17, 188, 46, 0.702);
     color: rgb(4, 94, 4);
     border-color: rgb(1, 66, 1);
 }

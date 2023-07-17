@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
-from . models import Apartment, Guest, Reservation, User
+from . models import Apartment, Reservation, User, Guest
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from . forms import ReservationForm, ReservationUpdateForm, AparmentReviewForm
@@ -86,7 +86,7 @@ class UserReservationListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(guest=self.request.user.guest) #.order_by('-date_in')
+        queryset = queryset.filter(guest=self.request.user).order_by('-date_in')
         return queryset
 
 
@@ -97,7 +97,7 @@ class UserReservationCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('user_reservations')
 
     def form_valid(self, form):
-        form.instance.guest = self.request.user.guest
+        form.instance.guest = self.request.user
         form.instance.status = 'r'
         messages.success(self.request, _('The apartment has been reserved!'))
         return super().form_valid(form)

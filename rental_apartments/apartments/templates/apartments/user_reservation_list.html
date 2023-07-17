@@ -26,7 +26,7 @@
                 <a class="button-change" href="{% url 'user_reservation_delete' reservation.pk %}">{% trans "Cancel" %}</a>
                 <a class="button-change" href="{% url 'user_reservation_update' reservation.pk  %}">{% trans "Update" %}</a>
             {% elif reservation.status == 'p' %} 
-            <a>{% trans "Done" %}</a>
+                <a>{% trans "Done" %}</a>
             {% endif %}
         </div>      
     {% endfor %}
